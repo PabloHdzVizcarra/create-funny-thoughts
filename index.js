@@ -1,5 +1,4 @@
 const express = require('express')
-const { dirname } = require('path')
 const app = express()
 const port = process.env.PORT || 3000
 const Hanblebars = require('express-handlebars')
@@ -36,8 +35,8 @@ run().catch(console.dir);
 
 app.use(express.static(__dirname + '/public'))
 
-app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
 
 app.use(express.static(__dirname + '/public'))
 
@@ -53,7 +52,7 @@ app.use(expressSession({
   secret: "superSecret"
 }))
 
-app.get('/', router())
+app.use('/', router())
 
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`)

@@ -1,0 +1,15 @@
+.nav-bar {
+  padding: 1rem .8rem;
+}
+
+body {
+  min-height: 100vh;
+  max-height: 100vh;
+}
+
+.main-container {
+  display: grid;
+  gap: 10px;
+  grid-template-rows: auto;
+}
+
