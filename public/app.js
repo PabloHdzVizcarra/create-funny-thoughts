@@ -22,7 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       body: JSON.stringify(dataObj)
     })
-      .then(res => console.log(res))
+      .then(res => res.json())
+      .then(data => console.log(data))
       .catch(err => console.log(err))
 
   })

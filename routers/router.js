@@ -11,7 +11,5 @@ module.exports = () => {
 
   router.post('/', handlers.sendForm )
 
-  
-
   return router
 }

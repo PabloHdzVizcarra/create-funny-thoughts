@@ -13,7 +13,9 @@ exports.sendForm = async (req, res) => {
   const db = acces.db('funny-toughts')
   db.collection('toughts').insertOne(req.body)
   
-  const dataFromDatabase = await db.collection('toughts').find().toArray()
-  console.log(dataFromDatabase)
+  const dataFromDatabase = await db.collection('toughts').find({}).toArray()
+  const dataSend = { ...dataFromDatabase }
+  res.json(dataSend)
   
+
 } 
