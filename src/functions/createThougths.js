@@ -2,9 +2,7 @@ export const createThougths = (
   array,
   idElement = '.js-toughts-area'
 ) => {
-  console.log(array)
   const div = document.querySelector(idElement)
-  console.log(div)
   if (array.length === 0) {
     div.insertAdjacentHTML('afterbegin',
       `<p>No tienes pensamientos, puedes comenzar agregando algunos</p>`

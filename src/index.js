@@ -1,4 +1,5 @@
 import { addAlerts } from './functions/addAlerts'
+import { addNewTought } from './functions/addNewTought'
 import { createThougths } from './functions/createThougths'
 import { deleteInputs } from './functions/deleteInputs'
 
@@ -39,6 +40,7 @@ document.addEventListener('DOMContentLoaded',() => {
           'success',
           'Pensamiento guardado con exito'
         )
+        addNewTought(data)
       })
       .catch(err => {
         console.log(err)
