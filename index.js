@@ -5,33 +5,9 @@ const Hanblebars = require('express-handlebars')
 const bodyParser = require('body-parser')
 const expressSession = require('express-session')
 const router = require('./routers/router')
-
-/* -------------------------------- Mongo DB -------------------------------- */
-
-const { MongoClient } = require('mongodb')
-const uri = 
-  "mongodb+srv://pablo_admin:_seguimos182@practice-apps.yuycn.mongodb.net/thoughts?retryWrites=true&w=majority"
-
-const client = new MongoClient(uri, {
-  useUnifiedTopology: true
-})
-
-async function run() {
-  try {
-    // Connect the client to the server
-    await client.connect();
-
-    // Establish and verify connection
-    await client.db("main").command({ ping: 1 });
-    console.log("Connected successfully to server");
-  } finally {
-    // Ensures that the client will close when you finish/error
-    await client.close();
-  }
-}
-run().catch(console.dir);
-
-/* -------------------------------------------------------------------------- */
+const { flash } = require('./lib/middleware/flash')
+const { sendMessage } = require('./lib/middleware/messageSucces')
+const cookieParser = require('cookie-parser')
 
 app.use(express.static(__dirname + '/public'))
 
@@ -46,11 +22,15 @@ app.engine('handlebars', Hanblebars({
 
 app.set('view engine', 'handlebars')
 
+app.use(cookieParser("dataSecret"))
 app.use(expressSession({
   resave: false,
   saveUninitialized: false,
   secret: "superSecret"
 }))
+
+app.use(flash)
+app.use(sendMessage)
 
 app.use('/', router())
 

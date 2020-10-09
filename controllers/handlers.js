@@ -8,14 +8,16 @@ const client = new MongoClient(uri, {useUnifiedTopology: true})
 
 exports.sendForm = async (req, res) => {
   console.log(req.body)
+  console.log(req.session)
 
   const acces = await client.connect()
   const db = acces.db('funny-toughts')
   db.collection('toughts').insertOne(req.body)
   
   const dataFromDatabase = await db.collection('toughts').find({}).toArray()
-  const dataSend = { ...dataFromDatabase }
-  res.json(dataSend)
+  const dataSend = { dataFromDatabase }
   
+  res.json(dataSend)
 
 } 
+

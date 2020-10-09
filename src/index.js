@@ -1,3 +1,7 @@
+import { addAlerts } from './functions/addAlerts'
+import { deleteInputs } from './functions/deleteInputs'
+
+
 document.addEventListener('DOMContentLoaded', () => {
 
   const form = document.querySelector('.js-form')
@@ -23,12 +27,20 @@ document.addEventListener('DOMContentLoaded', () => {
       body: JSON.stringify(dataObj)
     })
       .then(res => res.json())
-      .then(data => console.log(data))
+      .then(data => {
+        console.log(data)
+        deleteInputs('.js-form')
+        addAlerts(
+          '.js-messages',
+          'success',
+          'Pensamiento guardado con exito'
+        )
+      })
       .catch(err => console.log(err))
 
+    
+    
+    
   })
   
 })
-
-
-
