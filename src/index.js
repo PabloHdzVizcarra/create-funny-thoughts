@@ -1,9 +1,17 @@
 import { addAlerts } from './functions/addAlerts'
+import { createThougths } from './functions/createThougths'
 import { deleteInputs } from './functions/deleteInputs'
 
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded',() => {
 
+  fetch('http://localhost:3000/api', {
+    method: 'GET'
+  })
+    .then(res => res.json())
+    .then(createThougths)
+    .catch(console.log)
+  
   const form = document.querySelector('.js-form')
   
   form.addEventListener('submit', (event) => {
@@ -15,9 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
       title: values[0],
       tought: values[1]
     }
-
-    console.log(dataObj)
-
 
     fetch('/', {
       method: 'POST',
@@ -31,15 +36,17 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(data)
         deleteInputs('.js-form')
         addAlerts(
-          '.js-messages',
           'success',
           'Pensamiento guardado con exito'
         )
       })
-      .catch(err => console.log(err))
-
-    
-    
+      .catch(err => {
+        console.log(err)
+        addAlerts(
+          'danger',
+          'Ha ocurrido un error intenta de nuevo'
+        )
+      })
     
   })
   

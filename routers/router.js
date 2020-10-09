@@ -9,7 +9,8 @@ module.exports = () => {
     res.render('home')
   })
 
-  router.post('/', handlers.sendForm )
+  router.post('/', handlers.sendForm)
+  router.get('/api', handlers.getDataFromDB)
 
   return router
 }

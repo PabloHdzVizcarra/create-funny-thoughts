@@ -1,4 +1,4 @@
-export const addAlerts = (idElement, typeAlert, message) => {
+export const addAlerts = (typeAlert, message, idElement = '.js-messages') => {
   const divAlerts = document.querySelector(idElement)
 
   divAlerts.insertAdjacentHTML('afterBegin',
