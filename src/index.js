@@ -6,7 +6,7 @@ import { deleteInputs } from './functions/deleteInputs'
 
 
 document.addEventListener('DOMContentLoaded', async () => {
-
+  
   await fetch('http://localhost:3000/api', {
     method: 'GET'
   })
@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       .then(res => res.json())
       .then(data => {
         console.log(data)
+        
         deleteInputs('.js-form')
         addAlerts(
           'success',

@@ -15,7 +15,7 @@ export const createThougths = (
 
   array.map(tought => {
     div.insertAdjacentHTML('afterbegin',
-    `<div class="card w-50">
+    `<div class="card w-50 col-lg-3">
         <div class="card-body">
           <div class="d-flex justify-content-between align-items-start">
             <h5 class="card-title">${tought.title}</h5>
