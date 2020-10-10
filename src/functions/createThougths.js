@@ -1,13 +1,18 @@
+import { createElementParagraph } from "./createElementParagraph"
+
 export const createThougths = (
   array,
   idElement = '.js-toughts-area'
 ) => {
   const div = document.querySelector(idElement)
+  
   if (array.length === 0) {
-    div.insertAdjacentHTML('afterbegin',
-      `<p>No tienes pensamientos, puedes comenzar agregando algunos</p>`
+    createElementParagraph(
+      div,
+      'No tienes ningun pensamiento, pero puedes comenzar agregando alguno'
     )
   }
+
   array.map(tought => {
     div.insertAdjacentHTML('afterbegin',
     `<div class="card w-50">

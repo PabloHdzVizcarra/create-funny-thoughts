@@ -2,6 +2,8 @@ export const addNewTought = (data, idElement = '.js-toughts-area') => {
   console.log('Agregando tarea a la pantalla')
   const tought = data.ops[0]
   const div = document.querySelector(idElement)
+  const pInfo = document.querySelector('.js-no-toughts')
+  if(pInfo) pInfo.remove()
 
   div.insertAdjacentHTML('afterbegin',
     `<div class="card w-50">
