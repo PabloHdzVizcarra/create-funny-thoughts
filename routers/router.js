@@ -11,6 +11,7 @@ module.exports = () => {
 
   router.post('/', handlers.sendForm)
   router.get('/api', handlers.getDataFromDB)
+  router.delete('/api:id', handlers.deleteElement)
 
   return router
 }

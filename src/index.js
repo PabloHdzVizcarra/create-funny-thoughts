@@ -4,9 +4,9 @@ import { createThougths } from './functions/createThougths'
 import { deleteInputs } from './functions/deleteInputs'
 
 
-document.addEventListener('DOMContentLoaded',() => {
+document.addEventListener('DOMContentLoaded', async () => {
 
-  fetch('http://localhost:3000/api', {
+  await fetch('http://localhost:3000/api', {
     method: 'GET'
   })
     .then(res => res.json())
@@ -50,6 +50,29 @@ document.addEventListener('DOMContentLoaded',() => {
         )
       })
     
+  })
+
+  const areaTougths = document.querySelector('.js-toughts')
+  areaTougths.addEventListener('click', async (event) => {
+    if (event.target.tagName !== 'SPAN') return 
+
+    const idElement = {
+      title: event.target.dataset.name
+    }
+    
+    try {
+      const resp = await fetch(`http://localhost:3000/api${idElement}`, {
+        method: "DELETE",
+        headers: {
+          'Content-type': "application/json; charset=UTF-8"
+        },
+        body: JSON.stringify(idElement)
+      })
+      console.log(resp)
+      
+    } catch (error) {
+      console.log(error)
+    }
   })
   
 })

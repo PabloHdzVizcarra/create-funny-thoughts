@@ -13,3 +13,6 @@ body {
   grid-template-rows: auto;
 }
 
+.close-btn:hover {
+  background-color: tomato;
+}
