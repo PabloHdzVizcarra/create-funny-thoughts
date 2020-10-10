@@ -1,6 +1,7 @@
 import { addAlerts } from './functions/addAlerts'
 import { addNewTought } from './functions/addNewTought'
 import { createThougths } from './functions/createThougths'
+import { deleteElementByDataset } from './functions/deleteElementByDataset'
 import { deleteInputs } from './functions/deleteInputs'
 
 
@@ -68,7 +69,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         },
         body: JSON.stringify(idElement)
       })
-      console.log(resp)
+      
+      const data = await resp.json()
+      deleteElementByDataset(data.title)
       
     } catch (error) {
       console.log(error)

@@ -3,10 +3,11 @@ export const addNewTought = (data, idElement = '.js-toughts-area') => {
   const tought = data.ops[0]
   const div = document.querySelector(idElement)
   const pInfo = document.querySelector('.js-no-toughts')
+
   if(pInfo) pInfo.remove()
 
   div.insertAdjacentHTML('afterbegin',
-    `<div class="card w-50">
+    `<div class="card w-50 col-lg-3">
         <div class="card-body">
           <div class="d-flex justify-content-between align-items-start">
             <h5 class="card-title">${tought.title}</h5>

@@ -24,8 +24,6 @@ exports.getDataFromDB = async (req, res) => {
 };
 
 exports.deleteElement = async (req, res) => {
-  console.log(req.body)
   deleteElement(req.body)
-
-  res.json({status: 'delete'})
+  res.json(req.body)
 };
