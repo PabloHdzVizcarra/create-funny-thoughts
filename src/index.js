@@ -1,5 +1,6 @@
 import { addAlerts } from './functions/addAlerts'
 import { addNewTought } from './functions/addNewTought'
+import { checkForValidationErrorsWhenCreatingThought } from './functions/checkForValidationErrors'
 import { createThougths } from './functions/createThougths'
 import { deleteElementByDataset } from './functions/deleteElementByDataset'
 import { deleteInputs } from './functions/deleteInputs'
@@ -35,7 +36,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data)
+
+        if (data.errors) {
+          return checkForValidationErrorsWhenCreatingThought(
+            data.errors
+          )
+        }
         
         deleteInputs('.js-form')
         addAlerts(

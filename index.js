@@ -5,8 +5,6 @@ const Hanblebars = require('express-handlebars')
 const bodyParser = require('body-parser')
 const expressSession = require('express-session')
 const router = require('./routers/router')
-const { flash } = require('./lib/middleware/flash')
-const { sendMessage } = require('./lib/middleware/messageSucces')
 const cookieParser = require('cookie-parser')
 
 app.use(express.static(__dirname + '/public'))
@@ -28,9 +26,6 @@ app.use(expressSession({
   saveUninitialized: false,
   secret: "superSecret"
 }))
-
-app.use(flash)
-app.use(sendMessage)
 
 app.use('/', router())
 
