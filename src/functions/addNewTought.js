@@ -7,7 +7,7 @@ export const addNewTought = (data, idElement = '.js-toughts-area') => {
 
   if(pInfo) pInfo.remove()
 
-  div.insertAdjacentHTML('afterbegin',
+  return div.insertAdjacentHTML('afterbegin',
     `<div class="card w-50 col-lg-3">
         <div class="card-body">
           <div class="d-flex justify-content-between align-items-start">

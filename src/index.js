@@ -1,9 +1,10 @@
 import { addAlerts } from './functions/addAlerts'
 import { addNewTought } from './functions/addNewTought'
-import { checkForValidationErrorsWhenCreatingThought } from './functions/checkForValidationErrors'
+import { createErrorAlerts } from './functions/createErrorAlerts'
 import { createThougths } from './functions/createThougths'
 import { deleteElementByDataset } from './functions/deleteElementByDataset'
 import { deleteInputs } from './functions/deleteInputs'
+import { hideAlertWithSeconds } from './functions/hideAlertWithSeconds'
 
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -38,9 +39,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       .then(data => {
 
         if (data.errors) {
-          return checkForValidationErrorsWhenCreatingThought(
-            data.errors
-          )
+          createErrorAlerts(data.errors)
+          return 
         }
         
         deleteInputs('.js-form')
@@ -48,6 +48,9 @@ document.addEventListener('DOMContentLoaded', async () => {
           'success',
           'Pensamiento guardado con exito'
         )
+
+        hideAlertWithSeconds(3000, '.js-info-alert')
+
         addNewTought(data)
       })
       .catch(err => {
@@ -61,6 +64,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   })
 
   const areaTougths = document.querySelector('.js-toughts')
+  
   areaTougths.addEventListener('click', async (event) => {
     if (event.target.tagName !== 'SPAN') return 
 
@@ -79,6 +83,13 @@ document.addEventListener('DOMContentLoaded', async () => {
       
       const data = await resp.json()
       deleteElementByDataset(data.title)
+
+      addAlerts(
+        'success',
+        'se elimino con exito el pensamiento'
+      )
+
+      hideAlertWithSeconds(3000, '.js-info-alert')
       
     } catch (error) {
       console.log(error)

@@ -1,7 +1,7 @@
 import { addAlerts } from "./addAlerts"
 
-export const checkForValidationErrorsWhenCreatingThought = (data) => {
-  
+export const createErrorAlerts = (data) => {
+
   data.map(elem => {
     addAlerts(
       'danger',
