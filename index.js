@@ -30,9 +30,14 @@ app.use(expressSession({
 app.use('/', router())
 
 app.use((req, res) => {
-  res.render('404', {
+  res.status(404).render('404', {
     layout: false
   })
+})
+
+app.use(function (err, req, res, next) {
+  console.error(err.stack)
+  res.status(500).send('Error en el servidor')
 })
 
 app.listen(port, () => {
