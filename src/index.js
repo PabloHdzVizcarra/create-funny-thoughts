@@ -1,4 +1,4 @@
-import { addAlerts } from './functions/addAlerts'
+import { addAlerts } from './functions/addAlert/addAlerts'
 import { addNewTought } from './functions/addNewTought'
 import { createErrorAlerts } from './functions/createErrorAlerts'
 import { createThougths } from './functions/createThougths'
@@ -97,3 +97,5 @@ document.addEventListener('DOMContentLoaded', async () => {
   })
   
 })
+
+

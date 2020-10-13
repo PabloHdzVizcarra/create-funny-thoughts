@@ -29,6 +29,12 @@ app.use(expressSession({
 
 app.use('/', router())
 
+app.use((req, res) => {
+  res.render('404', {
+    layout: false
+  })
+})
+
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`)
 })

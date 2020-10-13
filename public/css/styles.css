@@ -1,3 +1,13 @@
+:root {
+  --primary: #00838f;
+  --primary-b: #005662;
+  --primary-l: #4fb3bf;
+  --secondary: #ab47bc;
+  --secondary-b: #790e8b;
+  --secondary-l: #df78ef;
+}
+
+
 .nav-bar {
   padding: 1rem .8rem;
 }
@@ -5,6 +15,7 @@
 body {
   min-height: 100vh;
   max-height: 100vh;
+  background-color: var(--main);
 }
 
 .main-container {

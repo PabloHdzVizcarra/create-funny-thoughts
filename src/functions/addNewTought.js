@@ -1,7 +1,5 @@
 export const addNewTought = (data, idElement = '.js-toughts-area') => {
-  console.log('Agregando tarea a la pantalla')
   const { title, tought } = data
-  console.log(tought)
   const div = document.querySelector(idElement)
   const pInfo = document.querySelector('.js-no-toughts')
 
@@ -20,4 +18,5 @@ export const addNewTought = (data, idElement = '.js-toughts-area') => {
         </div>
       </div>`
   )
+  
 }

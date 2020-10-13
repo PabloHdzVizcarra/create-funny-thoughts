@@ -1,4 +1,4 @@
-import { addAlerts } from "./addAlerts"
+import { addAlerts } from "./addAlert/addAlerts"
 
 export const createErrorAlerts = (data) => {
 
