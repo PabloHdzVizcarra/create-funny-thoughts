@@ -1,23 +1,16 @@
+import { getAllThoughtsFromDatabase } from '../lib/fetchCalls/getAllData/getAllThoughtsFromDatabase'
 import { addAlerts } from './functions/addAlert/addAlerts'
 import { addNewTought } from './functions/addNewTought'
 import { createErrorAlerts } from './functions/createErrorAlerts'
-import { createThougths } from './functions/createThougths'
 import { deleteElementByDataset } from './functions/deleteElementByDataset'
 import { deleteInputs } from './functions/deleteInputs'
 import { hideAlertWithSeconds } from './functions/hideAlertWithSeconds'
 
-
 document.addEventListener('DOMContentLoaded', async () => {
   
-  await fetch('http://localhost:3000/api', {
-    method: 'GET'
-  })
-    .then(res => res.json())
-    .then(createThougths)
-    .catch(console.log)
-  
+  await getAllThoughtsFromDatabase()
+
   const form = document.querySelector('.js-form')
-  
   form.addEventListener('submit', (event) => {
     event.preventDefault()
     const inputs = Array.from(form.getElementsByTagName("input"))
