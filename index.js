@@ -6,6 +6,7 @@ const bodyParser = require('body-parser')
 const expressSession = require('express-session')
 const router = require('./routers/router')
 const cookieParser = require('cookie-parser')
+require('./lib/operationsMongoDB')
 
 app.use(express.static(__dirname + '/public'))
 

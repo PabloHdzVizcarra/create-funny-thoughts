@@ -1,12 +1,20 @@
-const { db } = require("../lib/operationsMongoDB");
 const { Thought } = require('../models/thought-schema')
 
 exports.sendForm = async (req, res) => {
+  console.log('Sending data')
+  console.log(req.body)
 
-  const thought = new Thought(req.body)
-  await thought.save()
+  try {
+    
+    const thought = new Thought(req.body)
+    const result = await thought.save()
+  
+    res.status(201).json(result)
+  } catch (error) {
+    
+    res.status(400).json({error: "Ocurrio un error"})
+  }
 
-  res.json(req.body)
 }
 
 exports.getDataFromDB = async (req, res) => {
