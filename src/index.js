@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const dataObj = {
       title: values[0],
-      tought: values[1]
+      thought: values[1]
     }
 
     fetch('/', {

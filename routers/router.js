@@ -17,6 +17,7 @@ module.exports = () => {
   )
 
   router.get('/api', handlers.getDataFromDB)
+  
   router.delete('/api:id', handlers.deleteElement)
 
   return router

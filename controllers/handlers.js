@@ -1,12 +1,13 @@
-const { deleteElement, createItemInCollectionDB, getAllDataFromMongoDB } = require("../lib/operationsMongoDB");
+const { db } = require("../lib/operationsMongoDB");
+const { Thought } = require('../models/thought-schema')
 
 exports.sendForm = async (req, res) => {
-  console.log('Send Mongodb');
-  console.log(req.body);
-  await createItemInCollectionDB(req.body)
 
-  res.json(req.body);
-};
+  const thought = new Thought(req.body)
+  await thought.save()
+
+  res.json(req.body)
+}
 
 exports.getDataFromDB = async (req, res) => {
   const dataFromMongoDB = await getAllDataFromMongoDB()
