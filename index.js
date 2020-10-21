@@ -1,6 +1,6 @@
 const express = require('express')
+const port = require('./config').PORT || 4000
 const app = express()
-const port = process.env.PORT || 3000
 const Hanblebars = require('express-handlebars')
 const bodyParser = require('body-parser')
 const expressSession = require('express-session')
@@ -39,6 +39,7 @@ app.use(function (err, req, res, next) {
   console.error(err.stack)
   res.status(500).send('Error en el servidor')
 })
+
 
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`)

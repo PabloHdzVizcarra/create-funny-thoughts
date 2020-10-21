@@ -4,9 +4,10 @@
   "description": "application where you can save your thoughts",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watch",
-    "start": "nodemon index.js",
-    "build": "webpack --watch"
+    "test": "jest",
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "build": "webpack"
   },
   "author": "Pablo Hernandez",
   "license": "MIT",
