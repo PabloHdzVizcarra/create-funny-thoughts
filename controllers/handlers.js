@@ -18,12 +18,18 @@ exports.sendForm = async (req, res) => {
 }
 
 exports.getDataFromDB = async (req, res) => {
-  const dataFromMongoDB = await getAllDataFromMongoDB()
-  res.json(dataFromMongoDB);
+
+  const dataFromDB = await Thought.find({})
+  
+  try {
+    res.send(dataFromDB)
+  } catch (error) {
+    res.status(500).send(error)
+  }
 
 };
 
 exports.deleteElement = async (req, res) => {
-  deleteElement(req.body)
+  console.log(req.params.id)
   res.json(req.body)
 };

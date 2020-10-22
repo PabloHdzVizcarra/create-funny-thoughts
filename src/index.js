@@ -60,18 +60,14 @@ document.addEventListener('DOMContentLoaded', async () => {
   
   areaTougths.addEventListener('click', async (event) => {
     if (event.target.tagName !== 'SPAN') return 
-
-    const idElement = {
-      title: event.target.dataset.name
-    }
+    
+    const _id = event.target.parentElement.parentElement.parentElement.parentElement.dataset.id
     
     try {
-      const resp = await fetch(`http://localhost:3000/api${idElement}`, {
+      const url = location.origin
+
+      const resp = await fetch(`${url}/api/${_id}`, {
         method: "DELETE",
-        headers: {
-          'Content-type': "application/json; charset=UTF-8"
-        },
-        body: JSON.stringify(idElement)
       })
       
       const data = await resp.json()
