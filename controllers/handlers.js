@@ -1,8 +1,6 @@
 const { Thought } = require('../models/thought-schema')
 
 exports.sendForm = async (req, res) => {
-  console.log('Sending data')
-  console.log(req.body)
 
   try {
     
@@ -33,7 +31,7 @@ exports.deleteElement = async (req, res) => {
   try {
     const dataDelete = await Thought.findByIdAndDelete(req.params.id)
     if (!dataDelete) res.status(404).send("No item found")
-    
+
     res.status(200).json({
       idElementRemove: req.params.id
     })
