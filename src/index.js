@@ -2,7 +2,7 @@ import { getAllThoughtsFromDatabase } from '../lib/fetchCalls/getAllData/getAllT
 import { addAlerts } from './functions/addAlert/addAlerts'
 import { addNewTought } from './functions/addNewTought'
 import { createErrorAlerts } from './functions/createErrorAlerts'
-import { deleteElementByDataset } from './functions/deleteElementByDataset'
+import { deleteElementById } from './functions/deleteElementByDataset'
 import { deleteInputs } from './functions/deleteInputs'
 import { hideAlertWithSeconds } from './functions/hideAlertWithSeconds'
 
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   
   areaTougths.addEventListener('click', async (event) => {
     if (event.target.tagName !== 'SPAN') return 
-    
+
     const _id = event.target.parentElement.parentElement.parentElement.parentElement.dataset.id
     
     try {
@@ -71,7 +71,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       })
       
       const data = await resp.json()
-      deleteElementByDataset(data.title)
+      console.log(data);
+      deleteElementById(data.idElementRemove)
+
 
       addAlerts(
         'success',

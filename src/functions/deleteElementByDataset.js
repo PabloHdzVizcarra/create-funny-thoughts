@@ -1,10 +1,13 @@
-export const deleteElementByDataset = (dataset) => {
+export const deleteElementById = (id) => {
   const divToughts = Array.from(
     document.querySelectorAll('.js-close-btn')
   );
   
   divToughts.map(element => {
-    if (dataset === element.dataset.name) {
+    const divID =
+      element.parentElement.parentElement.parentElement.parentElement.dataset.id
+
+    if (divID === id) {
       element.parentElement.parentElement.parentElement.parentElement.remove()
     }
   })
